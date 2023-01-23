@@ -5,6 +5,7 @@ import { FC } from "react"
 import createEmotionCache from "../../theme/createEmotionCache"
 import MUIThemeProvider from "./MUIThemeProvider"
 
+import CssBaseline from "@mui/material/CssBaseline"
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
 

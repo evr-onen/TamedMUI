@@ -1,31 +1,41 @@
 // ** React Core
-import { Button, css, Card, CardActions, CardContent, CardMedia, Typography, Grid, Slide, IconButton } from "@mui/material"
 import React, { useEffect, useState } from "react"
-import { useTheme } from "next-themes"
-import LightModeIcon from "@mui/icons-material/LightMode"
-import DarkModeIcon from "@mui/icons-material/DarkMode"
-// ** MUI Imports
+import dynamic from "next/dynamic"
 
-const ProductCard = () => {
-  const { theme, resolvedTheme, setTheme } = useTheme()
+// ** Theme Imports
+import { useTheme } from "next-themes"
+
+// ** MUI Imports
+import { Card, CardContent, Grid, IconButton } from "@mui/material"
+
+// ** Icons
+const UIWeatherSunny = dynamic(() => import("mdi-material-ui/WeatherSunny"), { ssr: false })
+const UIWeatherNight = dynamic(() => import("mdi-material-ui/WeatherNight"), { ssr: false })
+
+// ** Components
+import LangDropdown from "./LangDropdown"
+
+const Header = () => {
+  const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), [])
 
   return (
-    <Grid container className="evren" justifyContent="center">
+    <Grid container className="evren" justifyContent="center" marginBottom="50px">
       <Grid item xs={9}>
-        <Card elevation={12}>
+        <Card>
           <CardContent>
             <Grid container spacing={5} justifyContent="space-between">
               <Grid item></Grid>
               <Grid item xs={4}>
-                <Grid xs={12} container spacing={5} justifyContent="flex-end">
+                <Grid container spacing={5} justifyContent="flex-end">
                   <Grid item>
-                    <IconButton aria-label="themeBtn" onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}>
-                      {resolvedTheme === "light" ? <DarkModeIcon /> : <LightModeIcon />}
+                    <IconButton color="inherit" aria-label="themeBtn" onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}>
+                      {resolvedTheme === "light" ? <UIWeatherNight /> : <UIWeatherSunny />}
                     </IconButton>
+                    <LangDropdown />
                   </Grid>
                 </Grid>
               </Grid>
@@ -37,4 +47,4 @@ const ProductCard = () => {
   )
 }
 
-export default ProductCard
+export default Header
