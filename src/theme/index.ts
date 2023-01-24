@@ -1,11 +1,12 @@
 import { PaletteOptions, createTheme, css, ThemeOptions } from "@mui/material/styles"
-
+// import overrides from "./overrides"
 export type AllowedTheme = NonNullable<PaletteOptions["mode"]>
 
 export const DEFAULT_THEME: AllowedTheme = "dark"
 
 export const lightTheme: ThemeOptions = createTheme({
   palette: {
+    mode: "light",
     primary: {
       main: "#4d4ddc",
     },
@@ -64,6 +65,7 @@ export const lightTheme: ThemeOptions = createTheme({
 
 export const darkTheme = createTheme({
   palette: {
+    mode: "dark",
     primary: {
       main: "#4d4ddc",
     },
