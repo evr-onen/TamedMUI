@@ -1,71 +1,57 @@
 import { PaletteOptions, createTheme, css, ThemeOptions } from "@mui/material/styles"
 // import overrides from "./overrides"
+import Overrides from "./overrides"
 export type AllowedTheme = NonNullable<PaletteOptions["mode"]>
+import { Theme } from "@mui/material/styles"
+export const DEFAULT_THEME: AllowedTheme = "light"
+// ** Vars
+import { deepPurple } from "@mui/material/colors"
 
-export const DEFAULT_THEME: AllowedTheme = "dark"
-
-export const lightTheme: ThemeOptions = createTheme({
+export let lightTheme: Theme = createTheme({
   palette: {
     mode: "light",
+
+    customColors: {
+      face: "#000",
+    },
+
     primary: {
-      main: "#4d4ddc",
+      main: deepPurple[400],
     },
     secondary: {
-      main: "#7171b3",
+      main: deepPurple[100],
+    },
+    background: {
+      default: deepPurple[50],
+      paper: deepPurple[100],
     },
     text: {
-      secondary: "#3466bf",
-      disabled: "rgba(154,154,226,0.38)",
-      primary: "#131564",
+      primary: deepPurple[600],
+      secondary: deepPurple[300],
+      disabled: "rgba(94,53,177,0.36)",
     },
     divider: "rgba(224,190,190,0.18)",
-    background: {
-      default: "#fdf2f2",
-      paper: "#4ea0dc",
-    },
   },
   typography: {
     fontFamily: "Roboto Condensed",
   },
-  components: {
-    MuiCard: {
-      defaultProps: {
-        elevation: 12,
-      },
-      styleOverrides: {
-        root: {},
-      },
-    },
-    MuiTypography: {
-      styleOverrides: {
-        // h5: {
-        //   "font-size": "36px",
-        // },
-      },
-    },
-    MuiOutlinedInput: {
-      styleOverrides: {
-        notchedOutline: {
-          borderColor: "#111333",
-        },
-      },
-    },
-    MuiMenuItem: {
-      styleOverrides: {
-        root: {
-          "&.Mui-selected": {
-            background: "#4d4ddc",
-            color: "#fdf2f2",
-          },
-        },
-      },
-    },
-  },
 })
 
+const overrideComponents = Overrides(lightTheme)
+
+lightTheme = createTheme(lightTheme, {
+  components: {
+    ...overrideComponents,
+  },
+})
 export const darkTheme = createTheme({
   palette: {
     mode: "dark",
+
+    customColors: {
+      face: "#ccc",
+    },
+
     primary: {
       main: "#4d4ddc",
     },
@@ -88,49 +74,48 @@ export const darkTheme = createTheme({
   },
 
   components: {
-    MuiCard: {
-      defaultProps: {
-        elevation: 12,
-      },
-      styleOverrides: {
-        root: {},
-      },
-    },
-    MuiTypography: {
-      styleOverrides: {
-        // h5: {
-        //   "font-size": "36px",
-        // },
-      },
-    },
-    MuiOutlinedInput: {
-      styleOverrides: {
-        notchedOutline: {
-          borderColor: "#fdf2f2",
-        },
-      },
-    },
-
-    // color: "#6adc4d;",
-    MuiTabs: {
-      styleOverrides: {
-        indicator: {
-          background: "#6adc4d",
-        },
-      },
-    },
-    MuiTab: {
-      styleOverrides: {
-        root: {
-          "&.Mui-selected": {
-            color: "#6adc4d",
-          },
-          "&:hover": {
-            color: "#6adc4d",
-          },
-        },
-      },
-    },
+    // MuiCard: {
+    //   defaultProps: {
+    //     elevation: 12,
+    //   },
+    //   styleOverrides: {
+    //     root: {},
+    //   },
+    // },
+    // MuiTypography: {
+    //   styleOverrides: {
+    //     // h5: {
+    //     //   "font-size": "36px",
+    //     // },
+    //   },
+    // },
+    // MuiOutlinedInput: {
+    //   styleOverrides: {
+    //     notchedOutline: {
+    //       borderColor: "#fdf2f2",
+    //     },
+    //   },
+    // },
+    // // color: "#6adc4d;",
+    // MuiTabs: {
+    //   styleOverrides: {
+    //     indicator: {
+    //       background: "#6adc4d",
+    //     },
+    //   },
+    // },
+    // MuiTab: {
+    //   styleOverrides: {
+    //     root: {
+    //       "&.Mui-selected": {
+    //         color: "#6adc4d",
+    //       },
+    //       "&:hover": {
+    //         color: "#6adc4d",
+    //       },
+    //     },
+    //   },
+    // },
   },
 })
 
