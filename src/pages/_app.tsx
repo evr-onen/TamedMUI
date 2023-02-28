@@ -10,10 +10,7 @@ import { FC } from "react"
 import { Grid } from "@mui/material"
 
 // ** Create Theme
-import PageProvider from "../src/components/helpers/PageProvider"
-// import CssBaseline from "@mui/material/CssBaseline"
-// import { ThemeProvider } from "@mui/material/styles"
-// import MuiOverride from "src/theme/override"
+import PageProvider from "src/theme/helpers/PageProvider"
 
 // ** Components Imports
 import Header from "src/components/Header"

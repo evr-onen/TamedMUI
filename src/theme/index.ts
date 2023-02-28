@@ -1,9 +1,42 @@
+declare module "@mui/material/styles" {
+  // interface Theme {
+  //   customColors: {
+  //     danger: React.CSSProperties["color"]
+  //   }
+  // }
+
+  interface Palette {
+    customColors?: {
+      face: React.CSSProperties["color"]
+    }
+  }
+
+  interface PaletteOptions {
+    customColors?: {
+      face: React.CSSProperties["color"]
+    }
+  }
+
+  // interface PaletteColor {
+  //   face?: React.CSSProperties["color"]
+  // }
+
+  // interface SimplePaletteColorOptions {
+  //   face?: React.CSSProperties["color"]
+  // }
+
+  interface ThemeOptions {
+    customColors?: {
+      face: React.CSSProperties["color"]
+    }
+  }
+}
 import { PaletteOptions, createTheme, css, ThemeOptions } from "@mui/material/styles"
-// import overrides from "./overrides"
 import Overrides from "./overrides"
 export type AllowedTheme = NonNullable<PaletteOptions["mode"]>
 import { Theme } from "@mui/material/styles"
 export const DEFAULT_THEME: AllowedTheme = "light"
+
 // ** Vars
 import { deepPurple } from "@mui/material/colors"
 
@@ -12,7 +45,7 @@ export let lightTheme: Theme = createTheme({
     mode: "light",
 
     customColors: {
-      face: "#000",
+      face: deepPurple[400],
     },
 
     primary: {
@@ -44,13 +77,13 @@ lightTheme = createTheme(lightTheme, {
     ...overrideComponents,
   },
 })
-export const darkTheme = createTheme({
+export let darkTheme = createTheme({
   palette: {
     mode: "dark",
 
-    customColors: {
-      face: "#ccc",
-    },
+    // customColors: {
+    //   face: "#ccc",
+    // },
 
     primary: {
       main: "#4d4ddc",
@@ -73,7 +106,11 @@ export const darkTheme = createTheme({
     fontFamily: "Roboto Condensed",
   },
 
+  components: {},
+})
+darkTheme = createTheme(darkTheme, {
   components: {
+    ...overrideComponents,
     // MuiCard: {
     //   defaultProps: {
     //     elevation: 12,
@@ -118,5 +155,6 @@ export const darkTheme = createTheme({
     // },
   },
 })
-
-export const globalStyles = {}
+export const globalStyles = {
+  face: deepPurple[400],
+}
