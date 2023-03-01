@@ -1,6 +1,6 @@
 //import Head from "next/head"
 import { Inter } from "next/font/google"
-import { Grid } from "@mui/material"
+import { Grid, Typography } from "@mui/material"
 import { useTheme } from "@mui/material"
 // const inter = Inter({ subsets: ["latin"] })
 
@@ -14,7 +14,17 @@ export default function Home() {
             asdads
           </Grid>
           <Grid item xs={6}>
-            asdasddasdasd
+            <Grid container>
+              <Grid item xs={12}>
+                <Typography textTransform="capitalize">Uye Girisi</Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography textTransform="capitalize">Uye Girisi</Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography textTransform="capitalize">Uye Girisi</Typography>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
